@@ -2376,7 +2376,7 @@ class Benchmark {
   int64_t writes_;
   int64_t readwrites_;
   int64_t merge_keys_;
-  bool report_file_operations_;
+//  bool report_file_operations_;
   bool use_blob_db_;
   std::vector<std::string> keys_;
 
@@ -2706,7 +2706,7 @@ class Benchmark {
                 ? FLAGS_num
                 : ((FLAGS_writes > FLAGS_reads) ? FLAGS_writes : FLAGS_reads)),
         merge_keys_(FLAGS_merge_keys < 0 ? FLAGS_num : FLAGS_merge_keys),
-        report_file_operations_(FLAGS_report_file_operations),
+//        report_file_operations_(FLAGS_report_file_operations),
 #ifndef ROCKSDB_LITE
         use_blob_db_(FLAGS_use_blob_db)
 #else
@@ -3292,10 +3292,10 @@ class Benchmark {
 
         CombinedStats combined_stats;
         for (int i = 0; i < num_repeat; i++) {
-#ifdef PROCESSANALYSIS
-          if (method == &Benchmark::ReadRandom || method == &Benchmark::ReadWhileWriting)
-            TableCache::CleanAll();
-#endif
+//#ifdef PROCESSANALYSIS
+//          if (method == &Benchmark::ReadRandom || method == &Benchmark::ReadWhileWriting)
+//            TableCache::CleanAll();
+//#endif
           Stats stats = RunBenchmark(num_threads, name, method);
           combined_stats.AddStats(stats);
         }

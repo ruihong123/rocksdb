@@ -1185,7 +1185,10 @@ class DBImpl : public DB {
   //
   // Default: true
   const bool batch_per_txn_;
-
+#ifdef PROCESSANALYSIS
+  std::atomic<size_t> Total_time_elapse;
+  std::atomic<size_t> flush_times;
+#endif
   // Each flush or compaction gets its own job id. this counter makes sure
   // they're unique
   std::atomic<int> next_job_id_;
