@@ -3096,6 +3096,7 @@ const Snapshot* DBImpl::GetSnapshotForWriteConflictBoundary() {
 
 SnapshotImpl* DBImpl::GetSnapshotImpl(bool is_write_conflict_boundary,
                                       bool lock) {
+  //TODO: get snapshot also get a superversion. why not?
   int64_t unix_time = 0;
   immutable_db_options_.clock->GetCurrentTime(&unix_time)
       .PermitUncheckedError();  // Ignore error

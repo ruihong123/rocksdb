@@ -3472,7 +3472,7 @@ class Benchmark {
     }
     delete[] arg;
     if (method == &Benchmark::WriteRandom)
-      sleep(15); // Digestion for SSTable compaction.
+      sleep(300); // Digestion for SSTable compaction.
     return merge_stats;
 
   }
@@ -6328,7 +6328,7 @@ class Benchmark {
     // the number of iterations is the larger of read_ or write_
     while (!duration.Done(1)) {
       DB* db = SelectDB(thread);
-      GenerateKeyFromInt(thread->rand.Next() % FLAGS_num, FLAGS_num, &key);
+      GenerateKeyFromInt(thread->rand.Next() % (FLAGS_num*FLAGS_threads), FLAGS_num, &key);
       if (get_weight == 0 && put_weight == 0) {
         // one batch completed, reinitialize for next batch
         get_weight = FLAGS_readwritepercent;
