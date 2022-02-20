@@ -1322,7 +1322,7 @@ static enum RepFactory StringToRepFactory(const char* ctype) {
 static enum RepFactory FLAGS_rep_factory;
 DEFINE_string(memtablerep, "skip_list", "");
 DEFINE_int64(hash_bucket_count, 1024 * 1024, "hash bucket count");
-DEFINE_bool(use_plain_table, false, "if use plain table "
+  DEFINE_bool(use_plain_table, false, "if use plain table "
             "instead of block-based table format");
 DEFINE_bool(use_cuckoo_table, false, "if use cuckoo table format");
 DEFINE_double(cuckoo_hash_ratio, 0.9, "Hash ratio for Cuckoo SST table.");
@@ -3472,7 +3472,7 @@ class Benchmark {
     }
     delete[] arg;
     if (method == &Benchmark::WriteRandom)
-      sleep(300); // Digestion for SSTable compaction.
+      sleep(100); // Digestion for SSTable compaction.
     return merge_stats;
 
   }
